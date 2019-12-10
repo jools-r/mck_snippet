@@ -1,0 +1,161 @@
+<h1>mck_snippet</h1>
+
+<p>This plugin allows users to insert text snippets into a page and manage them from an admin panel (or in conjunction with mck_login also from the frontend). Snippets can be assigned to &#8216;Zone&#8217;.</p>
+
+<p>There are no categories, tags or associated images – just text.</p>
+
+<h2>List of features</h2>
+
+<p>If you need to store and output static text that does not need to be published as an article, you can output it with a simple tag: <code>&lt;txp:mck_snippet /&gt;</code> wherever you want.</p>
+<p>The tag can be used in page templates, forms or articles.</p>
+
+<ul>
+	<li>New tab on the Content menu</li>
+	<li>Write snippet text</li>
+	<li>Put snippet wherever you want</li>
+	<li>Create a snippet zone</li>
+	<li>Create new snippet by zone directly from front-end</li>
+	<li>Sort snippets in single zone</li>
+	<li>Edit snippets in place on frontend</li>
+	<li>Manage snippet directly from front-end</li>
+	<li>Parse each snippet with Textile or use break new lines or leave text untouched</li>
+	<li>Parse each snippet with an own form</li>
+</ul>
+
+<h2>Plugin requirements</h2>
+
+<p>mck_snippet 1.8 minimum requirements:</p>
+
+<ul>
+	<li>Textpattern 4.7</li>
+	<li>Plugin dependency: &gt; mck_login 2.0 if use script</li>
+	<li>Jquery &gt; 1.5.1</li>
+</ul>
+
+<h2>Installation</h2>
+
+<p>Method 1: Paste the compiled plugin code to the plugin installer textarea and run the automatic setup. Then just activate the plugin and you are ready to use new tags that plugin includes like others.</p>
+<p>Method 2 – Textpattern 4.8+: Copy the folder into the <code>/plugins</code> directory (e.g. in <code>/textpattern/plugins</code>) and then visit the Admin › Plugins panel and import the plugin.</p>
+<p>Click install and activate the plugin.</p>
+<p>Thereafter you shoudl see a <em>Content › Snippets</em> panel where you can add, edit and delete snippets.</p>
+
+<h2>List of tags and attributes</h2>
+
+<h3><code>&lt;txp:mck_snippet /&gt;</code></h3>
+
+<p>Output a single snippet. Forms are “misc” forms.</p>
+
+<h4>Attributes</h4>
+
+<ul>
+	<li><strong>id:</strong> unique ID of snippet</li>
+	<li><strong>title:</strong> unique <span class="caps">TITLE</span> of snippet</li>
+	<li><strong>wraptag:</strong> <span class="caps">HTML</span> wraptag</li>
+	<li><strong>wrap_id:</strong> wraptag&#8217;s <span class="caps">HTML</span> id</li>
+	<li><strong>class:</strong> wraptag&#8217;s <span class="caps">HTML</span> class</li>
+	<li><strong>form:</strong> <span class="caps">HTML</span> form output</li>
+	<li><strong>editable:</strong> allow edit in place the snippet</li>
+</ul>
+
+<h3><code>&lt;txp:mck_snippet_zone /&gt;</code></h3>
+
+<p>Output a list of snippets in a defined div, ordered by snipOrder (you can sort in admin tab). Forms are “misc” forms.</p>
+
+<h4>Attributes</h4>
+
+<ul>
+	<li><strong>name:</strong> Zone name</li>
+	<li><strong>wraptag:</strong> <span class="caps">HTML</span> wraptag</li>
+	<li><strong>wrap_id:</strong> wraptag&#8217;s <span class="caps">HTML</span> id</li>
+	<li><strong>class:</strong> wraptag&#8217;s <span class="caps">HTML</span> class</li>
+	<li><strong>form:</strong> <span class="caps">HTML</span> form output</li>
+	<li><strong>break:</strong> <span class="caps">HTML</span> break</li>
+	<li><strong>breakclass:</strong> <span class="caps">HTML</span> break class</li>
+	<li><strong>empty:</strong> set if show &#8216;add new&#8217; text or leave it empty</li>
+	<li><strong>editable:</strong> allow edit in place the snippet</li>
+</ul>
+
+<h3><code>&lt;txp:mck_snippet_body /&gt;</code></h3>
+
+<p>Output snippet body:</p>
+
+<h3><code>&lt;txp:mck_snippet_title /&gt;</code></h3>
+
+<p>Show Snippet&#8217;s title</p>
+
+<h4>Attributes</h4>
+
+<ul>
+	<li><strong>no_widow:</strong> Control widows and overrule widows setting in Advanced Preferences (like txp:title)</li>
+</ul>
+
+<h3><code>&lt;txp:mck_snippet_script /&gt;</code></h3>
+
+<p>Include necessary js and css when the user logged in (using mck_login).</p>
+
+<h2>Global variables</h2>
+
+<h3>$thissnippet</h3>
+
+<p>This array is set during <em>mck_snippet</em> and <em>mck_snippet_zone</em> and inlcude all db field.</p>
+
+<h2>Plugin events</h2>
+
+<h3>mck_snippet.mck_snippets_ui</h3>
+
+<p>This event is called when admin form was build and extend it</p>
+
+<h2>Examples</h2>
+
+<pre><code>&lt;txp:mck_snippet title="test" form="myform" /&gt;</code></pre>
+
+<pre><code>&lt;txp:mck_snippet_zone zone="left" form="zoneform" /&gt;</code></pre>
+
+<h2>Textpack</h2>
+
+<p>English and French textpacks are included.<br />
+	If you want send me your textpack, email me at <a href="mailto:info@kreatore.it" rel="nofollow">info@kreatore.it</a></p>
+
+<pre><code>#@public
+#@language en
+mck_snippet_tab =&gt; Snippets
+mck_snippet_markup =&gt; Snippet markup
+mck_snippet_add =&gt; Add new snippet
+mck_snippet_code =&gt; Snippet code
+mck_snippet_no =&gt; No registered snippets
+mck_snippet_zone =&gt; Zone
+mck_snippet_no_zone =&gt; No zone selected
+mck_snippet_need =&gt; Snippet need at last title or id
+mck_snippet_add_content =&gt; Add some content
+
+#@public
+#@language fr-fr
+mck_snippet_tab => Snippets
+mck_snippet_markup => Contenu du Snippet
+mck_snippet_add => Ajouter un nouveau Snippet
+mck_snippet_code => Code du Snippet
+mck_snippet_no => Aucun Snippet enregistré
+mck_snippet_zone => Emplacement
+mck_snippet_no_zone => Aucun emplacement choisi
+mck_snippet_need => Un Snippet nécessite au moins un titre ou un n° d'ID
+mck_snippet_add_content => Ajoutez du contenu
+</code></pre>
+
+<h2>Changelog</h2>
+
+<ul>
+	<li>1.8.0 beta – Preliminary admin-side fixes for txp 4.7 and PHP 7 (jcr).</li>
+	<li>1.7.2 – Fix global variable issue in mck_snippet_title and mck_snippet_body</li>
+	<li>1.7.1 – Add Franch language pack <a href="http://forum.textpattern.com/viewtopic.php?pid=271743#p271743" rel="nofollow">Pat64</a></li>
+	<li>1.7 – Add mck_snippet_zone, mck_snippet_script and managment on admin side.</li>
+	<li>1.6 – Redesign <span class="caps">HTML</span> for <span class="caps">TXP</span> 4.5, add user privs</li>
+	<li>1.5 – Fix snippet murkup selected option and add textpack value in help. Help in english and italiano.</li>
+	<li>1.4 – Add Status change property and add <em>doTag()</em> function on return data</li>
+	<li>1.3 – Solved some issuse on mysql query</li>
+	<li>1.2 – Add Create New in Edito Method</li>
+	<li>1.1 – First Release</li>
+</ul>
+
+<h2>Note</h2>
+
+<p>Please post questions and support enquiries in the <a href="https://forum.textpattern.com/viewtopic.php?id=37379">forum thread</a>.</p>
